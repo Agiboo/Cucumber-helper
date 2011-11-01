@@ -1,0 +1,5 @@
+core = "7.x"
+description = "Creating basic data for cucumber testing"
+name = "Cucumber Helper Module"
+package = "Testing"
+version = "7.x-1.0"

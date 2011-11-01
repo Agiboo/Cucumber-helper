@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * implementation of hook_init()
+ */
+function cucumber_helper_init(){
+  drupal_add_js(drupal_get_path('module', 'cucumber_helper') . '/js/cucumber_helper.js');
+  
+}

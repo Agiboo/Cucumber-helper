@@ -1,0 +1,40 @@
+<?php
+function cucumber_helper_enable(){
+  $roles = user_roles(TRUE);
+  $names = array();
+  foreach ($roles as $role) {
+    $role_object = user_role_load_by_name($role);
+    $role_name = str_replace(" ", "_", $role);
+    $name = "cucumber_$role_name";
+    
+    
+    // Building the user array:
+    $ua = array(
+      'mail' => "$name@test.com",
+      'name' => "$name",
+      'pass' => "$name",
+      'status' => 1,
+    
+      'roles' => array(
+        $role_object->rid => $role_object->name
+      ),
+    );
+    array_push($names,$name);
+    // Create the account
+    user_save(null, $ua);
+  }
+  // save the names as a variable (for uninstalling)
+  variable_set('cucumber_helper_names', $names);
+  drupal_set_message('Added ' . count($roles) . ' new accounts for testing.');
+}
+
+function cucumber_helper_disable(){
+  $names = variable_get('cucumber_helper_names',array());
+  $i = 0;
+  foreach($names as $name){
+    $user = user_load_by_name($name);
+    user_delete($user->uid);
+    $i++;
+  }
+  drupal_set_message("Deleted $i user(s).");
+}
