@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * implementation of hook_enable()
+ */
 function cucumber_helper_enable(){
   $roles = user_roles(TRUE);
   $names = array();
@@ -28,6 +32,9 @@ function cucumber_helper_enable(){
   drupal_set_message('Added ' . count($roles) . ' new accounts for testing.');
 }
 
+/**
+ * implementation of hook_disable()
+ */
 function cucumber_helper_disable(){
   $names = variable_get('cucumber_helper_names',array());
   $i = 0;
