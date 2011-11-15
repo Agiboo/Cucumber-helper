@@ -1,2 +1,5 @@
 <?php
-// drupal requires this empty module file
+
+function cucumber_helper_js_alter(&$javascript) {
+  $javascript['modules/overlay/overlay-parent.js']['data'] = drupal_get_path('module', 'cucumber_helper') . '/overlay-parent.js';
+}
