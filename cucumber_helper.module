@@ -1,8 +1,8 @@
 <?php
 
 function cucumber_helper_js_alter(&$javascript) {
-  $overlay_js_path = drupal_get_path('module','overlay') . '/overlay-parent.js';
-  $overlay_custom_js_path = drupal_get_path('module', 'cucumber_helper') . '/overlay-parent.js';
+  //$overlay_js_path = drupal_get_path('module','overlay') . '/overlay-parent.js';
+  //$overlay_custom_js_path = drupal_get_path('module', 'cucumber_helper') . '/overlay-parent.js';
   
-  $javascript[$overlay_js_path] = drupal_js_defaults($overlay_custom_js_path);
+  //$javascript[$overlay_js_path] = drupal_js_defaults($overlay_custom_js_path);
 }
